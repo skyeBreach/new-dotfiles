@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#
+#
+
+#
+for MODULE in $(just find_modules); do 
+    stow --delete . --dir="./config/${MODULE}" --target ~/
+
+    if [[ $? -eq 0 ]]; then
+        echo "Succesfully Cleaned ${MODULE}"
+    fi
+done
