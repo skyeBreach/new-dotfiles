@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+#
+# Utilize GNU Stow to update existing and push new dotfiles
+
+# All module paths located in ./config
+MODULES=($(fd . --base-directory ./config --type d --exact-depth 1))
+
+# Track all modules with GNU Stow 
+for MODULE in ${MODULES}; do
+    stow .  --dir="./config/${MODULE}" --target ~/
+    if [[ $? -eq 0 ]]; then
+        echo "Succesfully Stowed ${MODULE}"
+    fi
+done
+
