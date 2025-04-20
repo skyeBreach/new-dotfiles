@@ -1,0 +1,30 @@
+# ================================================================================================== #
+# ZSH Paths
+
+# Path to the Oh My Zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+
+# Path to the Oh My Zsh custom settings
+ZSH_CUSTOM=$HOME/.config/zsh
+
+# ================================================================================================== #
+# Theming
+
+ZSH_THEME="robbyrussell"
+
+# ================================================================================================== #
+# Plugins and SubModules
+
+# First half of the work around for 'Insecure completion-dependent directories detected'
+ZSH_DISABLE_COMPFIX="true"
+
+# Array of 'Oh My ZSH' plugins to load
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Second half of the work around for Insecure completion-dependent directories detected'
+zstyle :compinstall filename '/home/skye/.zshrc'
+
+# ================================================================================================== #
+
