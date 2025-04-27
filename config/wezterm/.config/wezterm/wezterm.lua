@@ -11,5 +11,7 @@ config.font = wezterm.font_with_fallback({
     { family= 'SauceCodePro Nerd Font Mono', weight = 'Bold'},
 })
 
+config.term = 'wezterm'
+
 -- and finally, return the configuration to wezterm
 return config
