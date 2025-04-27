@@ -53,6 +53,7 @@ bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w exec --no-startup-id xdotool windowclose $(xdotool getactivewindow)
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
