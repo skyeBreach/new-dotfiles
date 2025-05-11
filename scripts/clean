@@ -2,11 +2,21 @@
 #
 #
 
-#
-for MODULE in $(just find_modules); do 
-    stow --delete . --dir="./config/${MODULE}" --target ~/
-
+# Delete all home modules with GNU Stow
+for MODULE in $(just find_modules_home); do
+    stow --delete . --dir="./config/home/${MODULE}/" --target="$HOME/"
     if [[ $? -eq 0 ]]; then
-        echo "Succesfully Cleaned ${MODULE}"
+        echo "Succesfully Cleaned ${MODULE}, path: ${HOME}/${MODULE}"
     fi
 done
+
+# Delete all etc modules with GNU Stow
+for MODULE in $(just find_modules_etc); do
+    stow --delete . --dir="./config/etc/${MODULE}/" --target="/etc/"
+    if [[ $? -eq 0 ]]; then
+        echo "Succesfully Cleaned ${MODULE}, path: /etc/${MODULE}"
+    fi
+done
+
+# Remove all dead symlinks
+fd . $HOME/ -L -tl -H -x rm
